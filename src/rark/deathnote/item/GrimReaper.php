@@ -81,7 +81,7 @@ abstract class GrimReaper{
 	 * @return void
 	 */
 	protected static function poison(Player $player):void{
-		$player->getEffects()->add((new EffectInstance(VanillaEffects::FATAL_POISON(), 10, 20*100))); //毒付与
+		$player->getEffects()->add((new EffectInstance(VanillaEffects::FATAL_POISON(), 20*100, 10))); //毒付与
 	}
 
 	/**

@@ -58,7 +58,7 @@ class DeathNote extends WritableBook{
 
 	/**
 	 * DeathReasonIdsを参照し、文字列から死因IDを取得します。
-	 * もし、不正な文字列だった場合はFallBackにしていされたIDを返します。
+	 * もし、不正な文字列だった場合はFallBackに指定されたIDを返します。
 	 *
 	 * @param string $reason
 	 * @param int $fallback
