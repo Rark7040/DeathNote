@@ -27,7 +27,3 @@ class Loader extends PluginBase{
 		$parser->register(DeathNote::INTERNAL_NAME, fn() => $note);
 	}
 }
-
-//$ref_func = new \ReflectionMethod(VanillaItems::class, 'register'); //VanillaItems::DEATH_NOTE()
-//$ref_func->setAccessible(true);
-//$ref_func->invoke(null, 'death_note', $note);
