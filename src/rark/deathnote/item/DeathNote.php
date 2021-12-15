@@ -17,12 +17,12 @@ class DeathNote extends WritableBook{
 		'1. このノートに名前を書かれた人間は死ぬ。',
 		'2. 死因を書かなければ全てが心臓麻痺となる。',
 		'',
-		'【example】',
+		'【Example】',
 		'ローレス: 爆死'
 	];
 
 	public function __construct(){
-		parent::__construct(new ItemIdentifier(ItemIds::WRITABLE_BOOK, 0), self::NAME);
+		parent::__construct(new ItemIdentifier(ItemIds::WRITABLE_BOOK, 0), self::INTERNAL_NAME);
 		$this->setCustomName(self::NAME);
 		$this->setLore(self::DESCRIPTION);
 	}
@@ -45,13 +45,13 @@ class DeathNote extends WritableBook{
 	 */
 	protected static function parseText(string $txt):void{
 		foreach(explode(PHP_EOL, $txt) as $line){
-			$order = explode(':', trim($line));
+			$order = explode(':', trim($line)); // ':'で区切られた文章を配列にして渡す
 
-			if(!isset($order[0])) continue;
+			if(!isset($order[0])) continue; //内容が空だったら次のラインに移動
 			$player = Server::getInstance()->getPlayerExact((string) $order[0]); //書き込まれた名前からPlayer Bを取得する
 			$reason = isset($order[1])? self::getDeathReason(trim((string) $order[1])): DeathReasonIds::HEART_ATTACK; //もし死因が記入されていた場合はその死因IDを取得する
 
-			if($player === null) continue; 
+			if($player === null) continue; //プレイヤーが取得できない・プレイヤーの名前が不正だったら次のラインに移動
 			GrimReaper::order($player, $reason); //死神くんにお願いする
 		}
 	}

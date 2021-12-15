@@ -13,8 +13,8 @@ class EventListener implements Listener{
 		$item = $ev->getItem();
 		$player = $ev->getPlayer();
 
-		if(!$item instanceof DeathNote) return;
-		if(!Server::getInstance()->isOp($player->getName())) return;
+		if(!$item instanceof DeathNote) return; //アイテムがデスノートじゃないなら中断
+		if(!Server::getInstance()->isOp($player->getName())) return; //使用者がopじゃないなら中断
 		$item->use();
 		$ev->cancel();
 	}
