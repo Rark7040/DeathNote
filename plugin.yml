@@ -1,0 +1,6 @@
+name: DeathNote
+version: 1.0.0
+main: rark\deathnote\Loader
+api: 4.0.0
+author: RarkHopper
+load: STARTUP
