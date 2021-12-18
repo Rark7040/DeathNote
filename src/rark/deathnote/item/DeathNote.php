@@ -49,7 +49,7 @@ class DeathNote extends WritableBook{
 
 			if(!isset($order[0])) continue; //内容が空だったら次のラインに移動
 			$player = Server::getInstance()->getPlayerExact((string) $order[0]); //書き込まれた名前からPlayer Bを取得する
-			$reason = isset($order[1])? self::getDeathReason(trim((string) $order[1])): DeathReasonIds::HEART_ATTACK; //もし死因が記入されていた場合はその死因IDを取得する
+			$reason = isset($order[1])? self::getDeathReason((string) $order[1]): DeathReasonIds::HEART_ATTACK; //もし死因が記入されていた場合はその死因IDを取得する
 
 			if($player === null) continue; //プレイヤーが取得できない・プレイヤーの名前が不正だったら次のラインに移動
 			GrimReaper::order($player, $reason); //死神くんにお願いする
